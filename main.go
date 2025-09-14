@@ -1,5 +1,9 @@
 package main
 
+/*
+#include <stdlib.h>
+#include <stdint.h>
+*/
 import "C"
 import (
 	"unsafe"
@@ -23,8 +27,8 @@ func DestroyEntity(entityID C.uint32_t) C.int {
 	return C.int(engine.DestroyEntity(EntityID(entityID)))
 }
 
-//export GetLastError
-func GetLastError() *C.char {
+//export GetLastEngineError
+func GetLastEngineError() *C.char {
 	engine := GetEngineInstance()
 	if engine.lastError == "" {
 		return nil
